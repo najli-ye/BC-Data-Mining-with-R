@@ -1,0 +1,951 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.335">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>practica-najliyayaestevez</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="Practica-NajliYayaEstevez_files/libs/clipboard/clipboard.min.js"></script>
+<script src="Practica-NajliYayaEstevez_files/libs/quarto-html/quarto.js"></script>
+<script src="Practica-NajliYayaEstevez_files/libs/quarto-html/popper.min.js"></script>
+<script src="Practica-NajliYayaEstevez_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="Practica-NajliYayaEstevez_files/libs/quarto-html/anchor.min.js"></script>
+<link href="Practica-NajliYayaEstevez_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="Practica-NajliYayaEstevez_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="Practica-NajliYayaEstevez_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="Practica-NajliYayaEstevez_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="Practica-NajliYayaEstevez_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+
+
+</head>
+
+<body class="fullcontent">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+
+<main class="content" id="quarto-document-content">
+
+
+
+<p>Vamos a cargar el dataset de AirBnB descargado de <a href="https://public.opendatasoft.com/explore/dataset/airbnb-listings/export/?disjunctive.host_verifications&amp;disjunctive.amenities&amp;disjunctive.features&amp;q=Madrid&amp;dataChart=eyJxdWVyaWVzIjpbeyJjaGFydHMiOlt7InR5cGUiOiJjb2x1bW4iLCJmdW5jIjoiQ09VTlQiLCJ5QXhpcyI6Imhvc3RfbGlzdGluZ3NfY291bnQiLCJzY2llbnRpZmljRGlzcGxheSI6dHJ1ZSwiY29sb3IiOiJyYW5nZS1jdXN0b20ifV0sInhBeGlzIjoiY2l0eSIsIm1heHBvaW50cyI6IiIsInRpbWVzY2FsZSI6IiIsInNvcnQiOiIiLCJzZXJpZXNCcmVha2Rvd24iOiJyb29tX3R5cGUiLCJjb25maWciOnsiZGF0YXNldCI6ImFpcmJuYi1saXN0aW5ncyIsIm9wdGlvbnMiOnsiZGlzanVuY3RpdmUuaG9zdF92ZXJpZmljYXRpb25zIjp0cnVlLCJkaXNqdW5jdGl2ZS5hbWVuaXRpZXMiOnRydWUsImRpc2p1bmN0aXZlLmZlYXR1cmVzIjp0cnVlfX19XSwidGltZXNjYWxlIjoiIiwiZGlzcGxheUxlZ2VuZCI6dHJ1ZSwiYWxpZ25Nb250aCI6dHJ1ZX0%3D&amp;location=16,41.38377,2.15774&amp;basemap=jawg.streets">aquí</a></p>
+<p><img src="descargar.png" class="img-fluid"></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>airbnb<span class="ot">&lt;-</span><span class="fu">read.csv</span>(<span class="st">'airbnb-listings.csv'</span>,<span class="at">sep =</span> <span class="st">';'</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">repr.plot.height=</span><span class="dv">4</span>,<span class="at">repr.plot.width=</span><span class="dv">6</span>,<span class="at">repr.plot.res =</span> <span class="dv">300</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ol type="1">
+<li>Vamos a quedarnos con las columnas de mayor interés: ‘City’,‘Room.Type’,‘Neighbourhood’,‘Accommodates’,‘Bathrooms’,‘Bedrooms’,‘Beds’,‘Price’,‘Square.Feet’,‘Guests.Included’,‘Extra.People’,‘Review.Scores.Rating’,‘Latitude’, ‘Longitude’ Nos quedarmos solo con las entradas de Madrid para Room.Type==“Entire home/apt” y cuyo barrio (Neighbourhood) no está vacio ’’ Podemos eliminar las siguientes columnas que ya no son necesarias: “Room.Type”,‘City’ Llama a nuevo dataframe df_madrid.</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>airbnb <span class="ot">&lt;-</span> airbnb[,<span class="fu">c</span>(<span class="st">'City'</span>,<span class="st">'Room.Type'</span>,<span class="st">'Neighbourhood'</span>,<span class="st">'Accommodates'</span>,<span class="st">'Bathrooms'</span>,<span class="st">'Bedrooms'</span>,<span class="st">'Beds'</span>,<span class="st">'Price'</span>,<span class="st">'Square.Feet'</span>,<span class="st">'Guests.Included'</span>,<span class="st">'Extra.People'</span>,<span class="st">'Review.Scores.Rating'</span>,<span class="st">'Latitude'</span>, <span class="st">'Longitude'</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>df_madrid <span class="ot">&lt;-</span> airbnb[<span class="fu">which</span>(airbnb<span class="sc">$</span>City <span class="sc">==</span> <span class="st">'Madrid'</span> <span class="sc">&amp;</span> airbnb<span class="sc">$</span>Room.Type <span class="sc">==</span> <span class="st">'Entire home/apt'</span><span class="sc">&amp;</span> airbnb<span class="sc">$</span>Neighbourhood <span class="sc">!=</span> <span class="st">""</span>),]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'dplyr'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following objects are masked from 'package:stats':
+
+    filter, lag</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following objects are masked from 'package:base':
+
+    intersect, setdiff, setequal, union</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Quitamos las columnas que ya no son necesarias:</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>df_madrid <span class="ot">&lt;-</span> <span class="fu">select</span> (df_madrid, <span class="sc">-</span><span class="st">'Room.Type'</span>, <span class="sc">-</span><span class="st">'City'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<hr>
+<ol start="2" type="1">
+<li>Crea una nueva columna llamada Square.Meters a partir de Square.Feet. Recuerda que un pie cuadrado son 0.092903 metros cuadrados.</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>df_madrid[<span class="st">"Square.Meters"</span>] <span class="ot">&lt;-</span> df_madrid<span class="sc">$</span>Square.Feet <span class="sc">*</span> <span class="fl">0.092903</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<hr>
+<ol start="3" type="1">
+<li>¿Que porcentaje de los apartamentos no muestran los metros cuadrados? Es decir, ¿cuantos tienen NA en Square.Meters?</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>    <span class="co">#Apartamentos cuyos Square.Meters son "NA":</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    df_na <span class="ot">&lt;-</span> df_madrid[<span class="fu">which</span>(<span class="fu">is.na</span>(df_madrid<span class="sc">$</span>Square.Meters)),]</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>    na_ratio <span class="ot">&lt;-</span> <span class="fu">nrow</span>(df_na)<span class="sc">/</span><span class="fu">nrow</span>(df_madrid)<span class="sc">*</span><span class="dv">100</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">paste</span>(<span class="st">"El % de pisos que no muestran los m2 es: "</span>, <span class="fu">round</span>(na_ratio,<span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "El % de pisos que no muestran los m2 es:  93.8"</code></pre>
+</div>
+</div>
+<hr>
+<ol start="4" type="1">
+<li>De todos los apartamentos que tienen un valor de metros cuadrados diferente de NA ¿Que porcentaje de los apartamentos tienen 0 metros cuadrados?</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>    <span class="co">#Apartamentos que *NO* tienen "NA m2"</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>    df_m2 <span class="ot">&lt;-</span> df_madrid[<span class="fu">which</span>(<span class="fu">is.na</span>(df_madrid<span class="sc">$</span>Square.Meters) <span class="sc">==</span> <span class="cn">FALSE</span>),] </span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>    <span class="co">#Apartamentos con 0 m2</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>    <span class="co">#df_0m2 &lt;- df_m2[which(df_m2$Square.Meters == '0'),]</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>    <span class="co">#df_0m2 &lt;- df_m2[which(df_m2$Square.Meters %in% c(0,0.000000)),] </span></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>    df_0m2 <span class="ot">&lt;-</span> df_m2[<span class="fu">which</span>(df_m2<span class="sc">$</span>Square.Meters <span class="sc">==</span> <span class="dv">0</span>),]</span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>    zero_ratio <span class="ot">&lt;-</span> <span class="fu">nrow</span>(df_0m2)<span class="sc">/</span><span class="fu">nrow</span>(df_m2)<span class="sc">*</span><span class="dv">100</span></span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">paste</span>(<span class="st">"El % de pisos que tienen 0 m2 es: "</span>, <span class="fu">round</span>(zero_ratio,<span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "El % de pisos que tienen 0 m2 es:  36.89"</code></pre>
+</div>
+</div>
+<hr>
+<ol start="5" type="1">
+<li>Reemplazar todos los 0m^2 por NA</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>    <span class="co">#Reemplazamos, en la columna "Square.Meters" los valores que son iguales a 0 m2:</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>    df_madrid[<span class="fu">which</span>(df_madrid<span class="sc">$</span>Square.Meters <span class="sc">==</span> <span class="dv">0</span>),<span class="st">"Square.Meters"</span>] <span class="ot">&lt;-</span> <span class="cn">NA</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<hr>
+<p>Hay muchos NAs, vamos a intentar crear un modelo que nos prediga cuantos son los metros cuadrados en función del resto de variables para tratar de rellenar esos NA. Pero <strong>antes de crear el modelo</strong> vamos a hacer: * pintar el histograma de los metros cuadrados y ver si tenemos que filtrar algún elemento más. * crear una variable sintética nueva basada en la similitud entre barrios que usaremos en nuestro modelo.</p>
+<ol start="6" type="1">
+<li>Pinta el histograma de los metros cuadrados y ver si tenemos que filtrar algún elemento más</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>    <span class="fu">library</span>(ggplot2)</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(df_madrid, <span class="fu">aes</span>(<span class="at">x=</span>Square.Meters)) <span class="sc">+</span> <span class="fu">geom_histogram</span>(<span class="at">fill=</span><span class="st">'darkblue'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Removed 5382 rows containing non-finite values (`stat_bin()`).</code></pre>
+</div>
+<div class="cell-output-display">
+<p><img src="Practica-NajliYayaEstevez_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>    <span class="co">#Pintamos también el diagrama de densidad:</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(df_madrid, <span class="fu">aes</span>(<span class="at">x=</span>Square.Meters)) <span class="sc">+</span> <span class="fu">geom_density</span>(<span class="at">fill=</span><span class="st">'darkorange'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Removed 5382 rows containing non-finite values (`stat_density()`).</code></pre>
+</div>
+<div class="cell-output-display">
+<p><img src="Practica-NajliYayaEstevez_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<hr>
+<ol start="7" type="1">
+<li>Asigna el valor NA a la columna Square.Meters de los apartamentos que tengan menos de 20 m^2</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>    df_madrid[<span class="fu">which</span>(df_madrid<span class="sc">$</span>Square.Meters <span class="sc">&lt;</span> <span class="dv">20</span>),<span class="st">"Square.Meters"</span>] <span class="ot">&lt;-</span> <span class="cn">NA</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<hr>
+<ol start="8" type="1">
+<li>Existen varios Barrios que todas sus entradas de Square.Meters son NA, vamos a eliminar del dataset todos los pisos que pertenecen a estos barrios.</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>    <span class="co">#Eliminamos barrios completos si todas sus entradas son de NA m2:</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>    df_madrid <span class="ot">&lt;-</span> df_madrid <span class="sc">|&gt;</span> <span class="fu">group_by</span>(Neighbourhood) <span class="sc">|&gt;</span> <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">all</span>(<span class="fu">is.na</span>(Square.Meters))) </span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>    df_madrid</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 4,901 × 13
+# Groups:   Neighbourhood [38]
+   Neighbourhood Accommodates Bathrooms Bedrooms  Beds Price Square.Feet
+   &lt;chr&gt;                &lt;int&gt;     &lt;dbl&gt;    &lt;int&gt; &lt;int&gt; &lt;int&gt;       &lt;int&gt;
+ 1 Embajadores              2         1        1     2    50          NA
+ 2 Embajadores              5         1        2     4    95          NA
+ 3 La Latina                4         1        1     2    69          NA
+ 4 Embajadores              4         1        1     2    57          NA
+ 5 La Latina                2         1        1     1    59          NA
+ 6 La Latina               14         2        3    14   120          NA
+ 7 La Latina                2         1        1     1    89          NA
+ 8 Palacio                  5         3        3     3   192          NA
+ 9 La Latina                4         1        1     1   100          NA
+10 Palacio                  5         2        2     2   100          NA
+# ℹ 4,891 more rows
+# ℹ 6 more variables: Guests.Included &lt;int&gt;, Extra.People &lt;int&gt;,
+#   Review.Scores.Rating &lt;int&gt;, Latitude &lt;dbl&gt;, Longitude &lt;dbl&gt;,
+#   Square.Meters &lt;dbl&gt;</code></pre>
+</div>
+</div>
+<p><em>Otro modo de hacerlo …</em></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="do">###Agrupo por barrio y cuento NA:</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="co">#barrios &lt;- df_madrid |&gt; group_by(Neighbourhood) |&gt; summarise(m2_na = sum(is.na(Square.Meters)))</span></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a><span class="do">###Agrupo por barrio y cuento entradas de pisos:</span></span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a><span class="co">#t1 &lt;- data.frame(table(df_madrid$Neighbourhood))</span></span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a><span class="co">#colnames(t1) &lt;- c("Neighbourhood", "Total")</span></span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a><span class="do">###Hago merge de ambos dataframe:</span></span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a><span class="co">#barrios_merged &lt;- merge(barrios, t1)</span></span>
+<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a><span class="do">###Veo los barrios con los pisos que NO tengan todos NA m^2:</span></span>
+<span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a><span class="co">#barrios_merged &lt;- subset(barrios_merged, m2_na != Total)</span></span>
+<span id="cb23-13"><a href="#cb23-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-14"><a href="#cb23-14" aria-hidden="true" tabindex="-1"></a><span class="co">#barrios_ok &lt;- c(barrios_merged$Neighbourhood)</span></span>
+<span id="cb23-15"><a href="#cb23-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-16"><a href="#cb23-16" aria-hidden="true" tabindex="-1"></a><span class="do">###Cojo los barrios que están en el vector de barrios_ok</span></span>
+<span id="cb23-17"><a href="#cb23-17" aria-hidden="true" tabindex="-1"></a><span class="co">#df_madrid &lt;- subset(df_madrid, Neighbourhood %in% barrios_ok)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<hr>
+<p>El barrio parece ser un indicador importante para los metros cuadrados de un apartamento.</p>
+<p>Vamos a agrupar los barrios por metros cuadrados. Podemos usar una matriz de similaridad de Tukey tal y como hicimos en el curso de estadística:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>tky<span class="ot">&lt;-</span><span class="fu">TukeyHSD</span>(<span class="fu">aov</span>( <span class="at">formula=</span>Square.Meters<span class="sc">~</span>Neighbourhood, <span class="at">data=</span>df_madrid ))</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>tky.result<span class="ot">&lt;-</span><span class="fu">data.frame</span>(tky<span class="sc">$</span>Neighbourhood)</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>cn <span class="ot">&lt;-</span><span class="fu">sort</span>(<span class="fu">unique</span>(df_madrid<span class="sc">$</span>Neighbourhood))</span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>resm <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="cn">NA</span>, <span class="fu">length</span>(cn),<span class="fu">length</span>(cn))</span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(resm) <span class="ot">&lt;-</span> cn</span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(resm) <span class="ot">&lt;-</span> cn</span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>resm[<span class="fu">lower.tri</span>(resm) ] <span class="ot">&lt;-</span> <span class="fu">round</span>(tky.result<span class="sc">$</span>p.adj,<span class="dv">4</span>)</span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>resm[<span class="fu">upper.tri</span>(resm) ] <span class="ot">&lt;-</span> <span class="fu">t</span>(resm)[<span class="fu">upper.tri</span>(resm)] </span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a><span class="fu">diag</span>(resm) <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(reshape2)</span>
+<span id="cb24-12"><a href="#cb24-12" aria-hidden="true" tabindex="-1"></a>dfResm <span class="ot">&lt;-</span> <span class="fu">melt</span>(resm)</span>
+<span id="cb24-13"><a href="#cb24-13" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(dfResm, <span class="fu">aes</span>(<span class="at">x=</span>Var1, <span class="at">y=</span>Var2, <span class="at">fill=</span>value))<span class="sc">+</span></span>
+<span id="cb24-14"><a href="#cb24-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_tile</span>(<span class="at">colour =</span> <span class="st">"black"</span>)<span class="sc">+</span></span>
+<span id="cb24-15"><a href="#cb24-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_gradient</span>(<span class="at">low =</span> <span class="st">"white"</span>,<span class="at">high =</span> <span class="st">"steelblue"</span>)<span class="sc">+</span></span>
+<span id="cb24-16"><a href="#cb24-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">"Class"</span>)<span class="sc">+</span><span class="fu">xlab</span>(<span class="st">"Class"</span>)<span class="sc">+</span><span class="fu">theme_bw</span>()<span class="sc">+</span></span>
+<span id="cb24-17"><a href="#cb24-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">90</span>, <span class="at">hjust =</span> <span class="dv">1</span>),<span class="at">legend.position=</span><span class="st">"none"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Practica-NajliYayaEstevez_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<ol start="9" type="1">
+<li>Usando como variable de distancia: 1-resm Dibuja un dendrograma de los diferentes barrios.</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>    <span class="co">#Matriz de distancias:</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>    d <span class="ot">&lt;-</span> <span class="fu">as.dist</span>(<span class="dv">1</span> <span class="sc">-</span><span class="fu">abs</span>(resm))</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>    <span class="co">#Creacion del cluster</span></span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>    hc <span class="ot">&lt;-</span> <span class="fu">hclust</span>(d, <span class="at">method=</span><span class="st">"complete"</span>)</span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>    <span class="co">#Dendrograma</span></span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>    airbnb.dend <span class="ot">&lt;-</span> <span class="fu">as.dendrogram</span>(hc)</span>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">par</span>(<span class="at">cex=</span><span class="fl">0.7</span>)</span>
+<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">plot</span>(airbnb.dend)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Practica-NajliYayaEstevez_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<hr>
+<ol start="10" type="1">
+<li>¿Que punto de corte sería el aconsejable?, ¿cuantos clusters aparecen? <em>Pintamos la evolución del error SSE: primero el ratio y luego el SSE Intra:</em></li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>    <span class="fu">library</span>(cluster)</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>    q<span class="ot">&lt;-</span><span class="fu">c</span>()</span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> (k <span class="cf">in</span> <span class="dv">2</span><span class="sc">:</span><span class="dv">8</span>){</span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>      myclust<span class="ot">&lt;-</span><span class="fu">kmeans</span>(<span class="dv">1</span><span class="sc">-</span>resm,k)</span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>      q[k]<span class="ot">&lt;-</span>myclust<span class="sc">$</span>betweenss<span class="sc">/</span>myclust<span class="sc">$</span>totss <span class="co">#SSE RATIO</span></span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">plot</span>(q)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Practica-NajliYayaEstevez_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>    q2<span class="ot">&lt;-</span><span class="fu">c</span>()</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> (k <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">8</span>){</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>      myclust<span class="ot">&lt;-</span><span class="fu">kmeans</span>(<span class="dv">1</span><span class="sc">-</span>resm,k)</span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>      q2[k]<span class="ot">&lt;-</span><span class="fu">sum</span>(myclust<span class="sc">$</span>withinss) <span class="co">#SSE INTRA</span></span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">plot</span>(q2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Practica-NajliYayaEstevez_files/figure-html/unnamed-chunk-16-2.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p><em>Parece que 4 clústers sería la cantidad óptima, ya que es el punto a partir del cual SSE se estabiliza y su variación no es notable.</em></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>    <span class="fu">library</span>(dendextend)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+---------------------
+Welcome to dendextend version 1.17.1
+Type citation('dendextend') for how to cite the package.
+
+Type browseVignettes(package = 'dendextend') for the package vignette.
+The github page is: https://github.com/talgalili/dendextend/
+
+Suggestions and bug-reports can be submitted at: https://github.com/talgalili/dendextend/issues
+You may ask questions at stackoverflow, use the r and dendextend tags: 
+     https://stackoverflow.com/questions/tagged/dendextend
+
+    To suppress this message use:  suppressPackageStartupMessages(library(dendextend))
+---------------------</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'dendextend'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following object is masked from 'package:stats':
+
+    cutree</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>    <span class="fu">plot</span>(<span class="fu">color_branches</span>(airbnb.dend,<span class="at">k=</span><span class="dv">4</span>),<span class="at">cex=</span><span class="fl">0.2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Practica-NajliYayaEstevez_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>    <span class="co">#Aplicamos cutree al objeto hclust para k=4 clústers</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>    clusters <span class="ot">&lt;-</span> <span class="fu">cutree</span>(hc, <span class="at">k=</span><span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>    <span class="co">#Pintamos el silhouette:</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>    ss<span class="ot">&lt;-</span><span class="fu">silhouette</span>(clusters, d, <span class="at">full=</span><span class="cn">TRUE</span>)</span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">plot</span>(ss, <span class="at">col=</span><span class="dv">1</span><span class="sc">:</span><span class="fu">max</span>(clusters),<span class="at">border=</span><span class="cn">NA</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Practica-NajliYayaEstevez_files/figure-html/unnamed-chunk-18-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p><em>No nos sale muy bonito ya que tenemos bastantes entradas con valores que tienen poco sentido estadístico. He querido graficarlo simplemente por ver qué aspecto tenía y por practicar ese código</em></p>
+<ol start="11" type="1">
+<li>Vamos a crear una nueva columna en el dataframe df_madrid con un nuevo identificador marcado por los clusters obtenidos. Esta columna la llamaremos neighb_id</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>    <span class="co">#Creamos un dataframe correspondiente a los clusters definidos arriba con cutree:</span></span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>    df_clusters <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(clusters)</span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>    <span class="co">#Podemos obtener los nombres de los barrios de este clúster:</span></span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>    df_clusters<span class="sc">$</span>Neighbourhood <span class="ot">&lt;-</span> <span class="fu">names</span>(clusters)</span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a>    <span class="co">#Mergeamos con el df_madrid, ya que ambos df tienen la columna Neighbourhood en común     y R aplicará los mismos valores de nºde cluster según el barrio</span></span>
+<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a>    df_madrid <span class="ot">&lt;-</span> <span class="fu">merge</span>(df_madrid, df_clusters)</span>
+<span id="cb35-8"><a href="#cb35-8" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb35-9"><a href="#cb35-9" aria-hidden="true" tabindex="-1"></a>    <span class="co">#Renombro la columna según el enunciado y la transformo a tipo factor:</span></span>
+<span id="cb35-10"><a href="#cb35-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">colnames</span>(df_madrid)[<span class="dv">14</span>] <span class="ot">&lt;-</span> <span class="st">'neighb_id'</span></span>
+<span id="cb35-11"><a href="#cb35-11" aria-hidden="true" tabindex="-1"></a>    df_madrid<span class="sc">$</span>neighb_id <span class="ot">&lt;-</span> <span class="fu">factor</span>(df_madrid<span class="sc">$</span>neighb_id)</span>
+<span id="cb35-12"><a href="#cb35-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-13"><a href="#cb35-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">head</span>(df_madrid)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  Neighbourhood Accommodates Bathrooms Bedrooms Beds Price Square.Feet
+1       Acacias            2         1        1    1    50          NA
+2       Acacias            3         1        1    2    45          NA
+3       Acacias            2         1        1    1    65          NA
+4       Acacias            4         1        2    4    70           0
+5       Acacias            4         1        2    2    45          NA
+6       Acacias            4         1        1    2    60         753
+  Guests.Included Extra.People Review.Scores.Rating Latitude Longitude
+1               1            0                   69 40.40221 -3.711326
+2               2           10                  100 40.40404 -3.703835
+3               1            0                  100 40.40233 -3.705738
+4               4           15                   91 40.40226 -3.703189
+5               2           25                   89 40.40068 -3.704121
+6               2           12                   85 40.40073 -3.706203
+  Square.Meters neighb_id
+1            NA         1
+2            NA         1
+3            NA         1
+4            NA         1
+5            NA         1
+6      69.95596         1</code></pre>
+</div>
+</div>
+<hr>
+<ol start="12" type="1">
+<li>Vamos a crear dos grupos, uno test y otro train.</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>    <span class="co">#Genero variable aleatoria para dividir el dataset original en train y test:</span></span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">set.seed</span>(<span class="dv">1111</span>)</span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>    idx <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(df_madrid),<span class="fu">nrow</span>(df_madrid)<span class="sc">*</span><span class="fl">0.7</span>)</span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>    <span class="co">#Para train tomo las primeras muestras:</span></span>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a>    df_madrid.train <span class="ot">&lt;-</span> df_madrid[idx,]</span>
+<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a>    <span class="co">#Para test, las restantes:</span></span>
+<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a>    df_madrid.test <span class="ot">&lt;-</span> df_madrid[<span class="sc">-</span>idx,]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<hr>
+<ol start="13" type="1">
+<li>Tratamos de predecir los metros cuadrados en función del resto de columnas del dataframe.</li>
+</ol>
+<p><em>Voy a probar con casi todas las columnas excepto la del Barrio (no es numérica) y la Latitud y Longitud (pueden ser redundantes). Tampoco podemos incluir Square.Feet ya que es proporcional a Square.Meters!</em></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>model_m2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(Square.Meters <span class="sc">~</span> Accommodates <span class="sc">+</span> Bathrooms <span class="sc">+</span> Bedrooms <span class="sc">+</span> Beds <span class="sc">+</span> Price <span class="sc">+</span> Review.Scores.Rating <span class="sc">+</span> neighb_id, <span class="at">data =</span> df_madrid.train)</span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model_m2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = Square.Meters ~ Accommodates + Bathrooms + Bedrooms + 
+    Beds + Price + Review.Scores.Rating + neighb_id, data = df_madrid.train)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-108.869  -10.939   -1.914   11.095  108.869 
+
+Coefficients:
+                      Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)          -45.27683   25.93298  -1.746  0.08359 .  
+Accommodates           4.10334    2.45786   1.669  0.09784 .  
+Bathrooms             14.13247    6.16466   2.292  0.02376 *  
+Bedrooms              10.09481    4.26053   2.369  0.01954 *  
+Beds                   1.88955    2.84476   0.664  0.50793    
+Price                  0.15286    0.05348   2.858  0.00509 ** 
+Review.Scores.Rating   0.45523    0.27673   1.645  0.10279    
+neighb_id2             9.94182   12.42062   0.800  0.42517    
+neighb_id3           104.67861   21.11565   4.957 2.59e-06 ***
+neighb_id4            -1.55080    6.31362  -0.246  0.80642    
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 25.03 on 111 degrees of freedom
+  (3309 observations deleted due to missingness)
+Multiple R-squared:  0.7576,    Adjusted R-squared:  0.738 
+F-statistic: 38.55 on 9 and 111 DF,  p-value: &lt; 2.2e-16</code></pre>
+</div>
+</div>
+<p><em>Nos sale un R2 bastante bueno: 0.7576</em></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Vamos a mirar la distancia de Cooks de este modelo:</span></span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">cooks.distance</span>(model_m2))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Practica-NajliYayaEstevez_files/figure-html/unnamed-chunk-22-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p><em>No hay casi outliers, muy buena señal.</em> <em>Ahora vamos a ver qué tal es nuestro modelo pintando los residuos del df de train:</em></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>df_madrid.train<span class="sc">$</span>m2_est <span class="ot">&lt;-</span> <span class="fu">predict</span>(model_m2, df_madrid.train)</span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(df_madrid.train<span class="sc">$</span>Square.Meters,(df_madrid.train<span class="sc">$</span>Square.Meters <span class="sc">-</span> df_madrid.train<span class="sc">$</span>m2_est))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Practica-NajliYayaEstevez_files/figure-html/unnamed-chunk-23-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p><em>Se ve que aumentan un poco a medida que crecen los m2 y también se aprecian los outliers que vimos en la Distancia de Cooks. Pero en general parecen bastante próximos a 0</em></p>
+<hr>
+<ol start="14" type="1">
+<li>Mirad el histograma de los residuos sobre el conjunto de test para evaluar la calidad de vuestro modelo</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>df_madrid.test<span class="sc">$</span>m2_est <span class="ot">&lt;-</span> <span class="fu">predict</span>(model_m2,df_madrid.test)</span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a><span class="co">#Pintamos histograma de residuos del df de test:</span></span>
+<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(df_madrid.test<span class="sc">$</span>Square.Meters<span class="sc">-</span>df_madrid.test<span class="sc">$</span>m2_est, <span class="at">xaxp=</span><span class="fu">c</span>(<span class="sc">-</span><span class="dv">100</span>,<span class="dv">100</span>,<span class="dv">10</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Practica-NajliYayaEstevez_files/figure-html/unnamed-chunk-24-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p><em>Sigue más o menos una distribución normal, aunque bastante abierta (de -40 a +40), no es muy buen modelo</em> <em>Calculamos métricas del modelo eliminando los NA de ambos df (train y test):</em></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>df_madrid.train.cl <span class="ot">&lt;-</span> <span class="fu">na.omit</span>(<span class="fu">subset</span>(df_madrid.train, <span class="at">select=</span><span class="fu">c</span>(Accommodates,Bathrooms, Bedrooms, Beds, Price,Review.Scores.Rating, neighb_id, Square.Meters)))</span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>                              </span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>df_madrid.test.cl <span class="ot">&lt;-</span> <span class="fu">na.omit</span>(<span class="fu">subset</span>(df_madrid.test, <span class="at">select=</span><span class="fu">c</span>(Accommodates,Bathrooms, Bedrooms, Beds, Price,Review.Scores.Rating, neighb_id, Square.Meters)))</span>
+<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a>caret<span class="sc">::</span><span class="fu">postResample</span>(<span class="at">pred=</span><span class="fu">predict</span>(model_m2,df_madrid.train.cl), </span>
+<span id="cb43-6"><a href="#cb43-6" aria-hidden="true" tabindex="-1"></a>                    <span class="at">obs=</span> df_madrid.train.cl<span class="sc">$</span>Square.Meters)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>      RMSE   Rsquared        MAE 
+23.9702586  0.7576366 15.2027003 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>caret<span class="sc">::</span><span class="fu">postResample</span>(<span class="at">pred=</span><span class="fu">predict</span>(model_m2,df_madrid.test.cl), </span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>                    <span class="at">obs=</span> df_madrid.test.cl<span class="sc">$</span>Square.Meters)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>      RMSE   Rsquared        MAE 
+26.2944563  0.6494593 18.5775482 </code></pre>
+</div>
+</div>
+<p><em>El RMSE sube un poco en test con respecto a train, y el R2 baja otro tanto. Esto entra dentro de los valores esperados para un modelo de regresión lineal.</em> <em>Aún así, voy a ver si eliminando variables mi modelo mejora…</em></p>
+<p><em>Pruebo a eliminar la variable Beds y la de Review.Scores.Rating, que son las que tienen mayor p-valor:</em></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Elimino Beds y Review.Scores.Rating, que tienen el mayor p-valor</span></span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>model_m2<span class="fl">.2</span> <span class="ot">&lt;-</span> <span class="fu">lm</span>(Square.Meters <span class="sc">~</span> Accommodates <span class="sc">+</span> Bathrooms <span class="sc">+</span> Bedrooms <span class="sc">+</span> Price <span class="sc">+</span> neighb_id, <span class="at">data =</span> df_madrid.train)</span>
+<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model_m2<span class="fl">.2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = Square.Meters ~ Accommodates + Bathrooms + Bedrooms + 
+    Price + neighb_id, data = df_madrid.train)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-117.815   -9.255   -1.375    8.817  117.815 
+
+Coefficients:
+              Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)   -1.50931    5.88624  -0.256  0.79808    
+Accommodates   3.39406    1.82872   1.856  0.06597 .  
+Bathrooms     14.70914    6.25351   2.352  0.02034 *  
+Bedrooms      12.95272    4.01346   3.227  0.00162 ** 
+Price          0.15815    0.05122   3.088  0.00252 ** 
+neighb_id2    -1.75025   11.26882  -0.155  0.87684    
+neighb_id3   113.38410   21.21025   5.346 4.51e-07 ***
+neighb_id4    -1.38253    6.38847  -0.216  0.82905    
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 25.46 on 117 degrees of freedom
+  (3305 observations deleted due to missingness)
+Multiple R-squared:  0.7418,    Adjusted R-squared:  0.7264 
+F-statistic: 48.03 on 7 and 117 DF,  p-value: &lt; 2.2e-16</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Vamos a mirar la distancia de Cooks de este modelo:</span></span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">cooks.distance</span>(model_m2<span class="fl">.2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Practica-NajliYayaEstevez_files/figure-html/unnamed-chunk-26-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p><em>Vamos a ver qué tal es nuestro nuevo modelo model_m2.2 pintando los residuos de train y de test:</em></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>df_madrid.train<span class="sc">$</span>m2_est <span class="ot">&lt;-</span> <span class="fu">predict</span>(model_m2<span class="fl">.2</span>, df_madrid.train)</span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(df_madrid.train<span class="sc">$</span>Square.Meters,(df_madrid.train<span class="sc">$</span>Square.Meters <span class="sc">-</span> df_madrid.train<span class="sc">$</span>m2_est))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Practica-NajliYayaEstevez_files/figure-html/unnamed-chunk-27-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Ahora con df de test:</span></span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>df_madrid.test<span class="sc">$</span>m2_est <span class="ot">&lt;-</span> <span class="fu">predict</span>(model_m2<span class="fl">.2</span>,df_madrid.test)</span>
+<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-4"><a href="#cb51-4" aria-hidden="true" tabindex="-1"></a><span class="co">#Pintamos histograma:</span></span>
+<span id="cb51-5"><a href="#cb51-5" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(df_madrid.test<span class="sc">$</span>Square.Meters<span class="sc">-</span>df_madrid.test<span class="sc">$</span>m2_est, <span class="at">xaxp=</span><span class="fu">c</span>(<span class="sc">-</span><span class="dv">100</span>,<span class="dv">100</span>,<span class="dv">10</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Practica-NajliYayaEstevez_files/figure-html/unnamed-chunk-27-2.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p><em>Sigue también más o menos una distribución normal, pero lo interesante es que la distribución se contrae con respecto al modelo anterior, lo cual me indica que es un modelo un poco mejor, menos residuos.</em></p>
+<p><em>Calculamos métricas del modelo model_m2.2 eliminando los NA de ambos df (train y test):</em></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Calculamos métricas del modelo model_m2.2 eliminando los NA:</span></span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a>df_madrid.train.cl <span class="ot">&lt;-</span> <span class="fu">na.omit</span>(<span class="fu">subset</span>(df_madrid.train, <span class="at">select=</span><span class="fu">c</span>(Accommodates,Bathrooms, Bedrooms, Beds, Price,Review.Scores.Rating, neighb_id, Square.Meters)))</span>
+<span id="cb52-4"><a href="#cb52-4" aria-hidden="true" tabindex="-1"></a>                              </span>
+<span id="cb52-5"><a href="#cb52-5" aria-hidden="true" tabindex="-1"></a>df_madrid.test.cl <span class="ot">&lt;-</span> <span class="fu">na.omit</span>(<span class="fu">subset</span>(df_madrid.test, <span class="at">select=</span><span class="fu">c</span>(Accommodates,Bathrooms, Bedrooms, Beds, Price,Review.Scores.Rating, neighb_id, Square.Meters)))</span>
+<span id="cb52-6"><a href="#cb52-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-7"><a href="#cb52-7" aria-hidden="true" tabindex="-1"></a>caret<span class="sc">::</span><span class="fu">postResample</span>(<span class="at">pred=</span><span class="fu">predict</span>(model_m2<span class="fl">.2</span>,df_madrid.train.cl), </span>
+<span id="cb52-8"><a href="#cb52-8" aria-hidden="true" tabindex="-1"></a>                    <span class="at">obs=</span> df_madrid.train.cl<span class="sc">$</span>Square.Meters)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     RMSE  Rsquared       MAE 
+24.469266  0.748089 14.595078 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>caret<span class="sc">::</span><span class="fu">postResample</span>(<span class="at">pred=</span><span class="fu">predict</span>(model_m2<span class="fl">.2</span>,df_madrid.test.cl), </span>
+<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a>                    <span class="at">obs=</span> df_madrid.test.cl<span class="sc">$</span>Square.Meters)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>      RMSE   Rsquared        MAE 
+27.2166985  0.6239442 19.2529764 </code></pre>
+</div>
+</div>
+<p><em>R2 baja un poco, pero es asumible sobre todo porque nuestro modelo se ha simplificado, que es lo que siempre buscamos. Así que el “sacrificio” de R2, si es por simplificar el modelo, siempre será para mejor.</em></p>
+<hr>
+<ol start="15" type="1">
+<li>Si tuvieramos un anuncio de un apartamento para 6 personas (Accommodates), con 1 baño, con un precio de 80€/noche y 3 habitaciones en el barrio de Sol, con 3 camas y un review de 80. ¿Cuantos metros cuadrados tendría? Si tu modelo necesita algúna variable adicional puedes inventartela dentro del rango de valores del dataset. ¿Como varía sus metros cuadrados con cada habitación adicional?</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>    <span class="co">#Variables para el piso de ejemplo:</span></span>
+<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a>    ej_accommodates <span class="ot">&lt;-</span> <span class="dv">6</span></span>
+<span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a>    ej_bath <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb56-4"><a href="#cb56-4" aria-hidden="true" tabindex="-1"></a>    ej_price <span class="ot">&lt;-</span> <span class="dv">80</span></span>
+<span id="cb56-5"><a href="#cb56-5" aria-hidden="true" tabindex="-1"></a>    ej_bedrooms <span class="ot">&lt;-</span> <span class="dv">3</span></span>
+<span id="cb56-6"><a href="#cb56-6" aria-hidden="true" tabindex="-1"></a>    ej_neighb <span class="ot">&lt;-</span> <span class="st">'Sol'</span></span>
+<span id="cb56-7"><a href="#cb56-7" aria-hidden="true" tabindex="-1"></a>    ej_beds <span class="ot">&lt;-</span> <span class="dv">3</span></span>
+<span id="cb56-8"><a href="#cb56-8" aria-hidden="true" tabindex="-1"></a>    ej_review <span class="ot">&lt;-</span> <span class="dv">80</span></span>
+<span id="cb56-9"><a href="#cb56-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-10"><a href="#cb56-10" aria-hidden="true" tabindex="-1"></a>    <span class="co">#Veo en qué clúster está Sol --&gt; Pertenece al cluster 2</span></span>
+<span id="cb56-11"><a href="#cb56-11" aria-hidden="true" tabindex="-1"></a>    ej_neighb <span class="ot">&lt;-</span> <span class="fu">factor</span>(<span class="fu">unique</span>(df_madrid[<span class="fu">which</span>(df_madrid<span class="sc">$</span>Neighbourhood <span class="sc">==</span> <span class="st">'Sol'</span>),<span class="st">"neighb_id"</span>]))</span>
+<span id="cb56-12"><a href="#cb56-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-13"><a href="#cb56-13" aria-hidden="true" tabindex="-1"></a>    <span class="co">#Aplico el predict con estos datos y mi modelo:</span></span>
+<span id="cb56-14"><a href="#cb56-14" aria-hidden="true" tabindex="-1"></a>    <span class="co">#NOTA: Mi modelo no necesita : ej_beds ni ej_review</span></span>
+<span id="cb56-15"><a href="#cb56-15" aria-hidden="true" tabindex="-1"></a>    m2_piso_ej <span class="ot">&lt;-</span> <span class="fu">predict</span>(model_m2<span class="fl">.2</span>, <span class="fu">data.frame</span>(<span class="at">Accommodates =</span> ej_accommodates, <span class="at">Bathrooms =</span> ej_bath, <span class="at">Bedrooms =</span> ej_bedrooms, <span class="at">Price =</span> ej_price, <span class="at">neighb_id =</span> ej_neighb ))</span>
+<span id="cb56-16"><a href="#cb56-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-17"><a href="#cb56-17" aria-hidden="true" tabindex="-1"></a>    <span class="fu">paste</span>(<span class="st">"Según los datos y el modelo, el piso tendría "</span>,<span class="fu">round</span>(m2_piso_ej,<span class="dv">2</span>),<span class="st">'m2'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Según los datos y el modelo, el piso tendría  83.69 m2"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a>    <span class="fu">paste</span>(<span class="st">"Cada habitación adicional sumaría "</span>, <span class="fu">round</span>(model_m2<span class="sc">$</span>coefficients[<span class="st">"Bedrooms"</span>],<span class="dv">2</span>), <span class="st">'m2'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Cada habitación adicional sumaría  10.09 m2"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a>    <span class="co">#paste("Cada habitación adicional sumaría ", model_m2$coefficients[4])</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<hr>
+<ol start="16" type="1">
+<li>Rellenar los Square.Meters con valor NA con el estimado con el modelo anterior.</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a>    <span class="co">#Para cada fila (pero del df de los square.meters==NA), coger los indices de nuestro modelo lm y aplicarselos a la columna $Square.Meters cuando sea == NA</span></span>
+<span id="cb61-2"><a href="#cb61-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb61-3"><a href="#cb61-3" aria-hidden="true" tabindex="-1"></a>    df_madrid<span class="sc">$</span>Square.Meters[<span class="fu">which</span>(<span class="fu">is.na</span>(df_madrid<span class="sc">$</span>Square.Meters))] <span class="ot">&lt;-</span> <span class="fu">predict</span>(model_m2, df_madrid[<span class="fu">which</span>(<span class="fu">is.na</span>(df_madrid<span class="sc">$</span>Square.Meters)),])</span>
+<span id="cb61-4"><a href="#cb61-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">head</span>(df_madrid)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  Neighbourhood Accommodates Bathrooms Bedrooms Beds Price Square.Feet
+1       Acacias            2         1        1    1    50          NA
+2       Acacias            3         1        1    2    45          NA
+3       Acacias            2         1        1    1    65          NA
+4       Acacias            4         1        2    4    70           0
+5       Acacias            4         1        2    2    45          NA
+6       Acacias            4         1        1    2    60         753
+  Guests.Included Extra.People Review.Scores.Rating Latitude Longitude
+1               1            0                   69 40.40221 -3.711326
+2               2           10                  100 40.40404 -3.703835
+3               1            0                  100 40.40233 -3.705738
+4               4           15                   91 40.40226 -3.703189
+5               2           25                   89 40.40068 -3.704121
+6               2           12                   85 40.40073 -3.706203
+  Square.Meters neighb_id
+1      28.10014         1
+2      47.44075         1
+3      44.50501         1
+4      65.14240         1
+5      56.63141         1
+6      69.95596         1</code></pre>
+</div>
+</div>
+<hr>
+<ol start="17" type="1">
+<li>Usar PCA para encontrar el apartamento más cercano a uno dado. Este algoritmo nos ayudaría a dado un apartamento que el algoritmo nos devolvería los 5 apartamentos más similares.</li>
+</ol>
+<p>Crearemos una función tal que le pasemos un apartamento con los siguientes datos: * Accommodates * Bathrooms * Bedrooms * Beds * Price * Guests.Included * Extra.People * Review.Scores.Rating * Latitude * Longitude * Square.Meters</p>
+<p>y nos devuelva los 5 más similares</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Nos quedamos con las columnas del enunciado:</span></span>
+<span id="cb63-2"><a href="#cb63-2" aria-hidden="true" tabindex="-1"></a>df_madrid.pca <span class="ot">&lt;-</span> df_madrid[<span class="fu">c</span>(<span class="st">"Accommodates"</span>,<span class="st">"Bathrooms"</span>,<span class="st">"Bedrooms"</span>,<span class="st">"Beds"</span>,<span class="st">"Price"</span>, <span class="st">"Guests.Included"</span>,<span class="st">"Extra.People"</span>,<span class="st">"Review.Scores.Rating"</span>, <span class="st">"Latitude"</span>,<span class="st">"Longitude"</span>, <span class="st">"Square.Meters"</span>)]</span>
+<span id="cb63-3"><a href="#cb63-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-4"><a href="#cb63-4" aria-hidden="true" tabindex="-1"></a><span class="co">#Hacemos na.omit()</span></span>
+<span id="cb63-5"><a href="#cb63-5" aria-hidden="true" tabindex="-1"></a>df_madrid.pca <span class="ot">&lt;-</span> <span class="fu">na.omit</span>(df_madrid.pca)</span>
+<span id="cb63-6"><a href="#cb63-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-7"><a href="#cb63-7" aria-hidden="true" tabindex="-1"></a><span class="co">#df_madrid.pca &lt;- matrix(df_madrid.pca)</span></span>
+<span id="cb63-8"><a href="#cb63-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-9"><a href="#cb63-9" aria-hidden="true" tabindex="-1"></a><span class="co">#Utilizamos prcomp para calcular el PCA</span></span>
+<span id="cb63-10"><a href="#cb63-10" aria-hidden="true" tabindex="-1"></a>prdfmad<span class="ot">&lt;-</span><span class="fu">prcomp</span>(df_madrid.pca, <span class="at">center=</span><span class="cn">TRUE</span>, <span class="at">scale. =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb63-11"><a href="#cb63-11" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(prdfmad<span class="sc">$</span>sdev<span class="sc">^</span><span class="dv">2</span><span class="sc">/</span><span class="fu">sum</span>(prdfmad<span class="sc">$</span>sdev<span class="sc">^</span><span class="dv">2</span>),<span class="at">main=</span><span class="st">"Autovalores"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Practica-NajliYayaEstevez_files/figure-html/unnamed-chunk-31-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a>prdfmad</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Standard deviations (1, .., p=11):
+ [1] 2.2158538 1.1763188 1.0291595 1.0119673 0.8225454 0.7709186 0.7035049
+ [8] 0.5731226 0.5195499 0.3839315 0.3337636
+
+Rotation (n x k) = (11 x 11):
+                            PC1          PC2          PC3          PC4
+Accommodates         0.40380564 -0.067164855  0.004506386 -0.157634813
+Bathrooms            0.35687094  0.069886389  0.177516743  0.126864524
+Bedrooms             0.39169462  0.009388749  0.121324461 -0.038072409
+Beds                 0.38682645 -0.043232772  0.074360502 -0.113864159
+Price                0.34895181  0.029288543  0.161698417  0.139029628
+Guests.Included      0.29259326 -0.101458498 -0.395824506 -0.172009738
+Extra.People         0.13619858 -0.141101724 -0.813020000 -0.123844006
+Review.Scores.Rating 0.04331043 -0.105199553 -0.223586548  0.928161260
+Latitude             0.02019624  0.693501960 -0.131712708 -0.005606895
+Longitude            0.03996132  0.681095979 -0.156264170  0.048812148
+Square.Meters        0.42037594  0.041019066  0.112408984  0.128416473
+                             PC5         PC6         PC7          PC8
+Accommodates          0.16486889 -0.20205067  0.18848194 -0.024078819
+Bathrooms            -0.26704696  0.31211191 -0.23199911  0.726128071
+Bedrooms              0.14934767 -0.05070079  0.24900751  0.009447945
+Beds                  0.22893180 -0.19048534  0.36454701 -0.057138479
+Price                -0.40812850  0.27575601 -0.27243348 -0.677842272
+Guests.Included       0.20914829 -0.36444174 -0.72047994  0.015460878
+Extra.People         -0.27070074  0.34023673  0.30744554  0.021786585
+Review.Scores.Rating  0.13687262 -0.20146233  0.06181569  0.001834630
+Latitude             -0.46895210 -0.51634698  0.11240209  0.039034687
+Longitude             0.55006799  0.43137263 -0.07906686 -0.084211952
+Square.Meters        -0.04442873  0.07072923  0.07218463  0.001264981
+                             PC9         PC10         PC11
+Accommodates         -0.25653668  0.715764541  0.354004861
+Bathrooms            -0.15857621 -0.085839595  0.194483622
+Bedrooms              0.78554437 -0.205160941  0.290134046
+Beds                 -0.50121988 -0.588372380 -0.088002892
+Price                -0.09697676 -0.077612977  0.200425876
+Guests.Included       0.06802800 -0.113429563 -0.066676246
+Extra.People          0.02287196 -0.025289641 -0.001164944
+Review.Scores.Rating -0.03782668  0.001460402  0.104901241
+Latitude              0.01229722 -0.015253953  0.013976464
+Longitude            -0.05972669  0.025714582  0.038488443
+Square.Meters         0.14503932  0.267607838 -0.829238097</code></pre>
+</div>
+</div>
+<p><em>Me quedo con los primeros 4 autovalores, que contienen aproximadamente un 80% de la información</em></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Veo estructura del PCA:</span></span>
+<span id="cb66-2"><a href="#cb66-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(prdfmad)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>List of 5
+ $ sdev    : num [1:11] 2.216 1.176 1.029 1.012 0.823 ...
+ $ rotation: num [1:11, 1:11] 0.404 0.357 0.392 0.387 0.349 ...
+  ..- attr(*, "dimnames")=List of 2
+  .. ..$ : chr [1:11] "Accommodates" "Bathrooms" "Bedrooms" "Beds" ...
+  .. ..$ : chr [1:11] "PC1" "PC2" "PC3" "PC4" ...
+ $ center  : Named num [1:11] 4.13 1.24 1.42 2.38 87.17 ...
+  ..- attr(*, "names")= chr [1:11] "Accommodates" "Bathrooms" "Bedrooms" "Beds" ...
+ $ scale   : Named num [1:11] 1.9 0.504 0.946 1.524 54.23 ...
+  ..- attr(*, "names")= chr [1:11] "Accommodates" "Bathrooms" "Bedrooms" "Beds" ...
+ $ x       : num [1:4187, 1:11] -2.353 -1.153 -1.883 0.835 -0.299 ...
+  ..- attr(*, "dimnames")=List of 2
+  .. ..$ : chr [1:4187] "1" "2" "3" "4" ...
+  .. ..$ : chr [1:11] "PC1" "PC2" "PC3" "PC4" ...
+ - attr(*, "class")= chr "prcomp"</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a>number_of_pca_components <span class="ot">&lt;-</span> <span class="dv">4</span></span>
+<span id="cb68-2"><a href="#cb68-2" aria-hidden="true" tabindex="-1"></a>knn<span class="ot">&lt;-</span><span class="dv">6</span></span>
+<span id="cb68-3"><a href="#cb68-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb68-4"><a href="#cb68-4" aria-hidden="true" tabindex="-1"></a><span class="co">#Vector con los datos del piso a comparar:</span></span>
+<span id="cb68-5"><a href="#cb68-5" aria-hidden="true" tabindex="-1"></a>new_vector <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>( <span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">50</span>, <span class="dv">1</span>, <span class="dv">0</span> , <span class="dv">69</span>, <span class="fl">40.40221</span>, <span class="sc">-</span><span class="fl">3.711326</span>, <span class="fl">28.10014</span>), <span class="at">nrow=</span><span class="dv">1</span>)</span>
+<span id="cb68-6"><a href="#cb68-6" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(new_vector) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Accommodates"</span>,<span class="st">"Bathrooms"</span>,<span class="st">"Bedrooms"</span>,<span class="st">"Beds"</span>,<span class="st">"Price"</span>, <span class="st">"Guests.Included"</span>,<span class="st">"Extra.People"</span>,<span class="st">"Review.Scores.Rating"</span>, <span class="st">"Latitude"</span>,<span class="st">"Longitude"</span>, <span class="st">"Square.Meters"</span>)</span>
+<span id="cb68-7"><a href="#cb68-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb68-8"><a href="#cb68-8" aria-hidden="true" tabindex="-1"></a><span class="co">#Prediccion. Ponemos el piso de ejemplo en el dominio PCA con predict:</span></span>
+<span id="cb68-9"><a href="#cb68-9" aria-hidden="true" tabindex="-1"></a>apartm <span class="ot">&lt;-</span> <span class="fu">predict</span>(prdfmad, new_vector)</span>
+<span id="cb68-10"><a href="#cb68-10" aria-hidden="true" tabindex="-1"></a><span class="co">#Nos quedamos con los componentes ppales de ese piso:</span></span>
+<span id="cb68-11"><a href="#cb68-11" aria-hidden="true" tabindex="-1"></a>apartm <span class="ot">&lt;-</span> <span class="fu">matrix</span>(apartm[<span class="dv">1</span><span class="sc">:</span>number_of_pca_components],<span class="at">nrow=</span><span class="dv">1</span>)</span>
+<span id="cb68-12"><a href="#cb68-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb68-13"><a href="#cb68-13" aria-hidden="true" tabindex="-1"></a><span class="co">#Nos quedamos con los componentes ppales de la matriz de rotacion:</span></span>
+<span id="cb68-14"><a href="#cb68-14" aria-hidden="true" tabindex="-1"></a>Apc<span class="ot">&lt;-</span>prdfmad<span class="sc">$</span>x[,<span class="dv">1</span><span class="sc">:</span>number_of_pca_components]</span>
+<span id="cb68-15"><a href="#cb68-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb68-16"><a href="#cb68-16" aria-hidden="true" tabindex="-1"></a><span class="co">#Matriz de distancia:</span></span>
+<span id="cb68-17"><a href="#cb68-17" aria-hidden="true" tabindex="-1"></a>dist<span class="ot">&lt;-</span><span class="fu">rowSums</span>((apartm[<span class="fu">rep</span>(<span class="dv">1</span>, <span class="at">times =</span> <span class="fu">nrow</span>(Apc)), ]<span class="sc">-</span> Apc)<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb68-18"><a href="#cb68-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb68-19"><a href="#cb68-19" aria-hidden="true" tabindex="-1"></a><span class="co">#El piso más similar es:</span></span>
+<span id="cb68-20"><a href="#cb68-20" aria-hidden="true" tabindex="-1"></a>knn_tags <span class="ot">&lt;-</span> <span class="fu">rownames</span>(df_madrid.pca)[<span class="fu">order</span>(dist,<span class="at">decreasing =</span> F) <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span>knn)]</span>
+<span id="cb68-21"><a href="#cb68-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb68-22"><a href="#cb68-22" aria-hidden="true" tabindex="-1"></a>similar_apartm <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(df_madrid.pca[knn_tags,])</span>
+<span id="cb68-23"><a href="#cb68-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb68-24"><a href="#cb68-24" aria-hidden="true" tabindex="-1"></a><span class="fu">paste</span>(<span class="st">"Los 5 pisos más similares al dado son: "</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Los 5 pisos más similares al dado son: "</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(similar_apartm[<span class="dv">2</span><span class="sc">:</span><span class="dv">6</span>,])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     Accommodates Bathrooms Bedrooms Beds Price Guests.Included Extra.People
+537             6       1.5        3    6   120               4           15
+1827            4       2.0        2    3   158               2           20
+2160            2       1.0        0    2    50               1            0
+2377            2       1.0        1    1    40               1            0
+2959            4       1.0        1    1    99               2            0
+     Review.Scores.Rating Latitude Longitude Square.Meters
+537                   100 40.44938 -3.677349     106.02913
+1827                  100 40.42641 -3.673278      94.93381
+2160                   97 40.42575 -3.692857      32.64121
+2377                   92 40.40858 -3.706100      37.04176
+2959                   97 40.42722 -3.709042      56.54316</code></pre>
+</div>
+</div>
+<hr>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>
